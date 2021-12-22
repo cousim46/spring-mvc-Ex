@@ -53,12 +53,19 @@ public class BasicItemController {
         itemRepository.save(item);
         //model.addAttribute("item",  item);
        return "basic/item";
-   }*/ @PostMapping("/add")
+   } @PostMapping("/add")
    public String addItemV2( Item item)
     {
-        itemRepository.save(item);
+        Item savedItem = itemRepository.save(item);
         //model.addAttribute("item",  item);
        return "basic/item";
+   }*/
+   @PostMapping("/add")
+   public String addItemV3( Item item)
+    {
+         itemRepository.save(item);
+        //model.addAttribute("item",  item);
+       return "redirect:/basic/items/" + item.getId();
    }
 
    @GetMapping("/{itemId}/edit")
